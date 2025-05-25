@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
+// Todo 테이블에 접근하는 DAO(Data Access Object)
 interface TodoDao{
     @Query("SELECT * FROM todos")
     suspend fun getAllTools() : List<TodoEntity>
