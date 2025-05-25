@@ -20,6 +20,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.to_do_list.presentation.viewmodel.TodoViewModel
@@ -27,7 +28,7 @@ import com.example.to_do_list.presentation.viewmodel.TodoViewModel
 @Composable
 fun TodoScreen(viewModel: TodoViewModel){
     val todos by viewModel.todoList.collectAsState()
-    val input by remember { mutableStateOf("") }
+    var input by remember { mutableStateOf("") }
 
     Column(modifier = Modifier.padding(16.dp)) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {

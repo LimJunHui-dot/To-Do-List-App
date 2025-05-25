@@ -4,6 +4,14 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.kapt")
+    id("dagger.hilt.android.plugin")
+}
+
+kapt{
+    arguments{
+        arg("room.schemaLocation", "$projectDir/schemas")
+    }
 }
 
 android {
@@ -39,6 +47,8 @@ android {
     buildFeatures {
         compose = true
     }
+
+    sourceSets["main"].assets.setSrcDirs(listOf("schemas"))
 }
 
 dependencies {
@@ -50,11 +60,11 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation("androidx.room:room-runtime:2.7.1")
-    implementation("androidx.room:room-compiler:2.7.1")
+    kapt("androidx.room:room-compiler:2.7.1")
     implementation("com.google.dagger:hilt-android:2.48")
-    implementation("com.google.dagger:hilt-compiler:2.48")
-    implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-    implementation("androidx.hilt:hilt-compiler:1.0.0")
+    kapt("com.google.dagger:hilt-compiler:2.48")
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)

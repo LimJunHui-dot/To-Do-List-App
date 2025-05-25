@@ -1,11 +1,13 @@
 package com.example.to_do_list.data.local
 
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 // Todo 테이블에 접근하는 DAO(Data Access Object)
+@Dao
 interface TodoDao{
     @Query("SELECT * FROM todos")
     suspend fun getAllTools() : List<TodoEntity>

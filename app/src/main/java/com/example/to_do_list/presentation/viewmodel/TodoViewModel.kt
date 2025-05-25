@@ -13,10 +13,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 // UI 상태를 관리하는 ViewModel - UseCase를 주입받아 사용
 @HiltViewModel
-class TodoViewModel (
+class TodoViewModel @Inject constructor (
     private val getTodoUseCase: GetTodoUseCase,
     private val addToUseCase: AddToUseCase,
     private val toggleTodoUseCase: ToggleTodoUseCase,
